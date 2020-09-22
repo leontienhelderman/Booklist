@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30011.22
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Booklist", "Booklist\Booklist.csproj", "{A94DD676-9FAC-4940-908A-5B465A1C7B6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooklistLib", "BooklistLib\BooklistLib.csproj", "{0CA0D8B4-C442-4FD1-9890-4912FD3B5206}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BooklistDAL", "BooklistDAL\BooklistDAL.csproj", "{FC84D072-4CBB-4D7A-83CC-E815D31B3E5B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A94DD676-9FAC-4940-908A-5B465A1C7B6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A94DD676-9FAC-4940-908A-5B465A1C7B6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A94DD676-9FAC-4940-908A-5B465A1C7B6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A94DD676-9FAC-4940-908A-5B465A1C7B6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0CA0D8B4-C442-4FD1-9890-4912FD3B5206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0CA0D8B4-C442-4FD1-9890-4912FD3B5206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0CA0D8B4-C442-4FD1-9890-4912FD3B5206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0CA0D8B4-C442-4FD1-9890-4912FD3B5206}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FC84D072-4CBB-4D7A-83CC-E815D31B3E5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC84D072-4CBB-4D7A-83CC-E815D31B3E5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC84D072-4CBB-4D7A-83CC-E815D31B3E5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC84D072-4CBB-4D7A-83CC-E815D31B3E5B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B378C1E7-F18C-4967-ABF2-80BC3A73A9ED}
+	EndGlobalSection
+EndGlobal
