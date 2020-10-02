@@ -1,0 +1,12 @@
+D:\repos\Booklist\BooklistDAL\bin\Debug\netcoreapp3.1\BooklistDAL.deps.json
+D:\repos\Booklist\BooklistDAL\bin\Debug\netcoreapp3.1\BooklistDAL.dll
+D:\repos\Booklist\BooklistDAL\bin\Debug\netcoreapp3.1\BooklistDAL.pdb
+D:\repos\Booklist\BooklistDAL\bin\Debug\netcoreapp3.1\BooklistLib.dll
+D:\repos\Booklist\BooklistDAL\bin\Debug\netcoreapp3.1\BooklistLib.pdb
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.csprojAssemblyReference.cache
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.csproj.CoreCompileInputs.cache
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.AssemblyInfoInputs.cache
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.AssemblyInfo.cs
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.csproj.CopyComplete
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.dll
+D:\repos\Booklist\BooklistDAL\obj\Debug\netcoreapp3.1\BooklistDAL.pdb

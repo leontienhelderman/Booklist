@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "BooklistDAL/1.0.0": {
+        "dependencies": {
+          "BooklistLib": "1.0.0"
+        },
+        "runtime": {
+          "BooklistDAL.dll": {}
+        }
+      },
+      "BooklistLib/1.0.0": {
+        "runtime": {
+          "BooklistLib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BooklistDAL/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "BooklistLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

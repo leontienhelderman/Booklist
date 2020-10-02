@@ -1,0 +1,33 @@
+﻿@model IEnumerable<BooklistLib.Book>
+
+@{
+    ViewBag.Title = "Book Index";
+}
+<h1>List of all books yeeey</h1>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Cover</th>
+                <th>ExtraInfo</th>
+                <th>Rating</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var book in Model)
+            {
+            <tr>
+                <td>@book.Title</td>
+                <td>@book.Author</td>
+                <td>@book.Cover</td>
+                <td>@book.ExtraInfo</td>
+                <td>@book.Rating</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
