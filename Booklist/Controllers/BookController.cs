@@ -4,12 +4,13 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BooklistLib;
+using BooklistLib.DTOs;
 
 namespace Booklist.Controllers
 {
     public class BookController : Controller
     {
-        private IBookRepository _bookRepository;
+        private readonly IBookRepository _bookRepository;
 
         public BookController(IBookRepository bookRepository)
         {
@@ -25,16 +26,7 @@ namespace Booklist.Controllers
 
         public ViewResult Details(int id)
         {
-            //var book1 = new Book
-            //{
-            //    Title = "Title",
-            //    Author = "Author",
-            //    Cover = "Cover",
-            //    ExtraInfo = "ExtraInfo",
-            //    Rating = 2
-            //};
-
-            var list = new List<Book>();
+            var list = new List<BookDTO>();
             list.Add(_bookRepository.GetBook(1));
             
             return View(list);

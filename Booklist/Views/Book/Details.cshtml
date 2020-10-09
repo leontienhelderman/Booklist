@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BooklistLib.Book>
+﻿@model IEnumerable<BooklistLib.DTOs.BookDTO>
 
 @{
     ViewBag.Title = "Book Index";
@@ -14,6 +14,7 @@
                 <th>Cover</th>
                 <th>ExtraInfo</th>
                 <th>Rating</th>
+                <th>Genre</th>
             </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
                 <td>@book.Cover</td>
                 <td>@book.ExtraInfo</td>
                 <td>@book.Rating</td>
+                <td>@book.Genre</td>
             </tr>
             }
         </tbody>

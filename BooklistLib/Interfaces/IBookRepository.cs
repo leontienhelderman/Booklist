@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BooklistLib.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,8 +7,8 @@ namespace BooklistLib
 {
     public interface IBookRepository
     {
-        List<Book> GetAllBooks();
+        List<BookDTO> GetAllBooks();
 
-        Book GetBook(int Id);
+        BookDTO GetBook(int Id);
     }
 }
