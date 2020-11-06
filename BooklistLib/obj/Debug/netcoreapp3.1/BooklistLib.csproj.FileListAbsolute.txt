@@ -1,9 +1,9 @@
 D:\repos\Booklist\BooklistLib\bin\Debug\netcoreapp3.1\BooklistLib.deps.json
 D:\repos\Booklist\BooklistLib\bin\Debug\netcoreapp3.1\BooklistLib.dll
 D:\repos\Booklist\BooklistLib\bin\Debug\netcoreapp3.1\BooklistLib.pdb
-D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.csprojAssemblyReference.cache
 D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.csproj.CoreCompileInputs.cache
 D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.AssemblyInfoInputs.cache
 D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.AssemblyInfo.cs
 D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.dll
 D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.pdb
+D:\repos\Booklist\BooklistLib\obj\Debug\netcoreapp3.1\BooklistLib.csprojAssemblyReference.cache

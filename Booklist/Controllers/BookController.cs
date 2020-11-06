@@ -4,32 +4,31 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BooklistLib;
-using BooklistLib.DTOs;
+using BooklistLib.DTOsDAL;
+using BooklistLib.InterfacesView;
 
 namespace Booklist.Controllers
 {
     public class BookController : Controller
     {
-        private readonly IBookRepository _bookRepository;
+        private readonly IBook _bookCollection;
 
-        public BookController(IBookRepository bookRepository)
+        public BookController(IBook bookCollection)
         {
-            _bookRepository = bookRepository;
+            _bookCollection = bookCollection;
         }
 
         public IActionResult Index()
         {
-            var list = _bookRepository.GetAllBooks();
-
+            var list = _bookCollection.ShowBooks();
             return View(list);
         }
 
         public ViewResult Details(int id)
         {
-            var list = new List<BookDTO>();
-            list.Add(_bookRepository.GetBook(1));
-            
-            return View(list);
+            BookCollection book = new BookCollection();
+            book.ShowBook(id);
+            return View(book);
         }
     }
 }

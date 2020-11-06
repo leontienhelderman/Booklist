@@ -114,3 +114,9 @@ D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\Book\Details.csht
 D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\Book\Index.cshtml.g.cs
 D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\BooklistDAL.dll
 D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\BooklistDAL.pdb
+D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\System.Data.SqlClient.dll
+D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll

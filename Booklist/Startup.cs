@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using BooklistDAL;
 using BooklistLib;
+using BooklistLib.InterfacesView;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -26,7 +27,8 @@ namespace Booklist
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddSingleton<IBookRepository, BookRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<IBook, BookCollection>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

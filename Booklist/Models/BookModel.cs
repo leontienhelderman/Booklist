@@ -12,7 +12,6 @@ namespace Booklist.Models
         public string Cover { get; set; }
         public string ExtraInfo { get; set; }
         public int Rating { get; set; }
-        public int Id { get; set; }
         public string Genre { get; set; }
     }
 }
