@@ -1,5 +1,6 @@
 ﻿using BooklistLib.DTOsDAL;
 using BooklistLib.InterfacesView;
+using BooklistLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -19,13 +20,12 @@ namespace BooklistLib
             
         }
 
-        public void AddBook(Book book)
+        
+
+        public void AddBook(BookModel book)
         {
-            _bookRepository.Create();
-            BookDTO bookDTO = new BookDTO(); 
-            book = bookDTO;
-            BookDTO bookDTO1 = (BookDTO)book;
-            Books.Add(bookDTO1);
+            BookDTO bookDTO = ConvertToBookDTO(book);
+            _bookRepository.Create(bookDTO);
         }
 
         public void DeleteBook(Book book)
@@ -38,17 +38,54 @@ namespace BooklistLib
 
         }
 
-        public List<BookDTO> ShowBooks()
+        public List<BookModel> GetBooks()
         {
-            Books = _bookRepository.GetAllBooks();
-            return Books;
+            List<BookDTO> bookDTOs = _bookRepository.GetAllBooks();
+            List<BookModel> books = new List<BookModel>();
+
+            foreach(BookDTO bookDTO in bookDTOs)
+            {
+                BookModel book = ConvertToBook(bookDTO);
+                books.Add(book);
+            }
+            
+            return books;
         }
 
-        public Book ShowBook(int id)
+        public BookModel GetBook(int id)
         {
-            Book book = new BookDTO(id);
-            book = _bookRepository.GetBook(id);
+            BookDTO bookDTO = new BookDTO(id);
+            bookDTO = _bookRepository.GetBook(id);
+            BookModel book = ConvertToBook(bookDTO);
             return book;           
+        }
+
+        public BookModel ConvertToBook(BookDTO bookDTO)
+        {
+            BookModel book = new BookModel()
+            {
+                Author = bookDTO.Author,
+                Title = bookDTO.Title,
+                Genre = bookDTO.Genre,
+                ExtraInfo = bookDTO.ExtraInfo,
+                Cover = bookDTO.Cover,
+                Rating = bookDTO.Rating
+            };
+            return book;
+        }
+
+        public BookDTO ConvertToBookDTO(BookModel book)
+        {
+            BookDTO bookDTO = new BookDTO()
+            {
+                Author = book.Author,
+                Title = book.Title,
+                Genre = book.Genre,
+                ExtraInfo = book.ExtraInfo,
+                Cover = book.Cover,
+                Rating = book.Rating
+            };
+            return bookDTO;
         }
     }
 }

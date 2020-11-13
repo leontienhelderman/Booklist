@@ -1,4 +1,5 @@
 ﻿using BooklistLib.DTOsDAL;
+using BooklistLib.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,8 +8,10 @@ namespace BooklistLib.InterfacesView
 {
     public interface IBook
     {
-        List<BookDTO> ShowBooks();
+        List<BookModel> GetBooks();
 
-        Book ShowBook(int id);
+        BookModel GetBook(int id);
+
+        void AddBook(BookModel book);
     }
 }

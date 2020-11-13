@@ -1,4 +1,4 @@
-﻿@model IEnumerable<BooklistLib.DTOsDAL.BookDTO>;
+﻿@model IEnumerable<BooklistLib.Models.BookModel>;
 
 @{
     ViewData["Title"] = "Index";
@@ -13,8 +13,6 @@
                 <th>Title</th>
                 <th>Author</th>
                 <th>Genre</th>
-                <th>Cover</th>
-                <th>ExtraInfo</th>
                 <th>Rating</th>
             </tr>
         </thead>
@@ -25,8 +23,6 @@
                     <td>@book.Title</td>
                     <td>@book.Author</td>
                     <td>@book.Genre</td>
-                    <td>@book.Cover</td>
-                    <td>@book.ExtraInfo</td>
                     <td>@book.Rating</td>
                 </tr>
             }

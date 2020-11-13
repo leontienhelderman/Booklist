@@ -12,7 +12,7 @@ namespace BooklistLib
 
         BookDTO GetBook(int Id);
 
-        bool Create();
+        bool Create(BookDTO book);
 
         bool Update();
 

@@ -5,12 +5,12 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BooklistDAL
 {
     public class BookRepository : IBookRepository
     {
-        private List<BookDTO> _bookList;
         string connectionString = @"Server = mssql.fhict.local; Database = dbi439215_booklist; User Id = dbi439215_booklist; Password = booklist";
         SqlConnection cnn;
         SqlCommand command;
@@ -25,25 +25,24 @@ namespace BooklistDAL
 
         public List<BookDTO> GetAllBooks()
         {
+            List<BookDTO> books;
             cnn = new SqlConnection(connectionString);
             cnn.Open();
-            sql = "Select * from Book";
-            command = new SqlCommand(sql, cnn);
+            sql = "Select Title, Author, Genre from Book";
             adapter.SelectCommand = new SqlCommand(sql, cnn);
             adapter.SelectCommand.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
             adapter.Fill(dataTable);
             
-            _bookList = (from DataRow dr in dataTable.Rows
+            books = (from DataRow book in dataTable.Rows
                          select new BookDTO()
                          {
-                             Author = dr["Author"].ToString(),
-                             Genre = dr["Genre"].ToString(),
-                             Title = dr["Title"].ToString()
+                             Author = book["Author"].ToString(),
+                             Genre = book["Genre"].ToString(),
+                             Title = book["Title"].ToString()
                          }).ToList();
-            return _bookList;
+            return books;
         }
-
 
         public BookDTO GetBook(int Id)
         {
@@ -51,11 +50,9 @@ namespace BooklistDAL
             cnn = new SqlConnection(connectionString);
             cnn.Open();
             sql = "Select * from Book where Book_Id = @Id";
-            command.Parameters.AddWithValue("@Id", Id);
             command = new SqlCommand(sql, cnn);
+            command.Parameters.AddWithValue("@Id", Id);
             dataReader = command.ExecuteReader();
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
 
             while (dataReader.Read())
             {
@@ -66,18 +63,19 @@ namespace BooklistDAL
             return bookDTO;
         }
 
-        public bool Create()
+        public bool Create(BookDTO book)
         {
             bool added = false;
             if (!added)
             {
                 cnn = new SqlConnection(connectionString);
                 cnn.Open();
-                sql = "insert into book (Title, Author, Genre, Book_Id) values('PuppetMaster', 'Brandon Mull', 'Fantasy', 2)";
+                sql = "insert into book (Title, Author, Genre) values(@Title, @Author, @Genre)";
                 command = new SqlCommand(sql, cnn);
-                adapter.InsertCommand = new SqlCommand(sql, cnn);
-                adapter.InsertCommand.ExecuteNonQuery();
-                command.Dispose();
+                command.Parameters.AddWithValue("@Title", book.Title);
+                command.Parameters.AddWithValue("@Author", book.Author);
+                command.Parameters.AddWithValue("@Genre", book.Genre);
+                command.ExecuteNonQuery();
                 cnn.Close();
                 return true;
             }

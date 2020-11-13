@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using BooklistLib;
-using BooklistLib.DTOsDAL;
 using BooklistLib.InterfacesView;
+using BooklistLib.Models;
 
 namespace Booklist.Controllers
 {
@@ -20,15 +19,27 @@ namespace Booklist.Controllers
 
         public IActionResult Index()
         {
-            var list = _bookCollection.ShowBooks();
+            var list = _bookCollection.GetBooks();
             return View(list);
         }
 
         public ViewResult Details(int id)
         {
-            BookCollection book = new BookCollection();
-            book.ShowBook(id);
+            BookModel book = _bookCollection.GetBook(id);
             return View(book);
+        }
+
+        [HttpGet]
+        public ViewResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(BookModel book)
+        {
+            _bookCollection.AddBook(book);
+            return RedirectToAction("Index", "Book");
         }
     }
 }
