@@ -43,9 +43,9 @@ namespace Booklist.Controllers
         }
 
         [HttpGet]
-        public ViewResult Edit()
+        public ViewResult Edit(int id)
         {
-            return View();
+            return View(_bookCollection.GetBook(id));
         }
 
         [HttpPost]
