@@ -10,12 +10,12 @@ namespace BooklistLib
     {
         List<BookDTO> GetAllBooks();
 
-        BookDTO GetBook(int Id);
+        BookDTO GetBook(int id);
 
-        bool Create(BookDTO book);
+        void Create(BookDTO book);
 
-        bool Update();
+        void Update(BookDTO book);
 
-        bool Delete();
+        void Delete(int id);
     }
 }

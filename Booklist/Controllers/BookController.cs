@@ -41,5 +41,32 @@ namespace Booklist.Controllers
             _bookCollection.AddBook(book);
             return RedirectToAction("Index", "Book");
         }
+
+        [HttpGet]
+        public ViewResult Edit()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Edit(BookModel book)
+        {
+            _bookCollection.EditBook(book);
+            return RedirectToAction("Index", "Book");
+        }
+
+        [HttpGet]
+        public ViewResult Delete(int id)
+        {
+            var book = _bookCollection.GetBook(id);
+            return View(book);
+        }
+
+        [HttpPost]
+        public IActionResult Delete(BookModel book)
+        {
+            _bookCollection.DeleteBook(book.Id);
+            return RedirectToAction("Index", "Book");
+        }
     }
 }

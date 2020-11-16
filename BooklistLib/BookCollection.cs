@@ -20,22 +20,21 @@ namespace BooklistLib
             
         }
 
-        
-
         public void AddBook(BookModel book)
         {
             BookDTO bookDTO = ConvertToBookDTO(book);
             _bookRepository.Create(bookDTO);
         }
 
-        public void DeleteBook(Book book)
+        public void DeleteBook(int id)
         {
-
+            _bookRepository.Delete(id);
         }
 
-        public void EditBook(Book book)
+        public void EditBook(BookModel book)
         {
-
+            BookDTO bookDTO = ConvertToBookDTO(book);
+            _bookRepository.Update(bookDTO);
         }
 
         public List<BookModel> GetBooks()
@@ -69,7 +68,8 @@ namespace BooklistLib
                 Genre = bookDTO.Genre,
                 ExtraInfo = bookDTO.ExtraInfo,
                 Cover = bookDTO.Cover,
-                Rating = bookDTO.Rating
+                Rating = bookDTO.Rating,
+                Id = bookDTO.Id                
             };
             return book;
         }
@@ -83,7 +83,8 @@ namespace BooklistLib
                 Genre = book.Genre,
                 ExtraInfo = book.ExtraInfo,
                 Cover = book.Cover,
-                Rating = book.Rating
+                Rating = book.Rating,
+                Id = book.Id
             };
             return bookDTO;
         }

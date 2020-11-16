@@ -13,5 +13,9 @@ namespace BooklistLib.InterfacesView
         BookModel GetBook(int id);
 
         void AddBook(BookModel book);
+
+        void EditBook(BookModel book);
+
+        void DeleteBook(int id);
     }
 }
