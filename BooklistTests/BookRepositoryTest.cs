@@ -13,10 +13,9 @@ namespace BooklistTests
             bookRepository = new BookRepository();
         }
 
-        [Test]
-        public void CreateBookInDatabase()
-        {
-            Assert.IsTrue(bookRepository.Create());
-        }
+        //    [Test]
+        //    public void CreateBookInDatabase()
+        //    {
+        //        Assert.IsTrue(bookRepository.Create());
     }
 }

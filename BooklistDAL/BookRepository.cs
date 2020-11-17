@@ -28,7 +28,7 @@ namespace BooklistDAL
             List<BookDTO> books;
             cnn = new SqlConnection(connectionString);
             cnn.Open();
-            sql = "Select Title, Author, Genre, Book_Id from Book";
+            sql = "SELECT Title, Author, Genre, Id FROM Book";
             adapter.SelectCommand = new SqlCommand(sql, cnn);
             adapter.SelectCommand.ExecuteNonQuery();
             DataTable dataTable = new DataTable();
@@ -40,7 +40,7 @@ namespace BooklistDAL
                              Author = book["Author"].ToString(),
                              Genre = book["Genre"].ToString(),
                              Title = book["Title"].ToString(),
-                             Id = (int)book["Book_Id"]
+                             Id = (int)book["Id"]
                          }).ToList();
             return books;
         }
@@ -50,7 +50,7 @@ namespace BooklistDAL
             BookDTO bookDTO = new BookDTO();
             cnn = new SqlConnection(connectionString);
             cnn.Open();
-            sql = "SELECT * FROM Book WHERE Book_Id = @Id";
+            sql = "SELECT * FROM Book WHERE Id = @Id";
             command = new SqlCommand(sql, cnn);
             command.Parameters.AddWithValue("@Id", id);
             dataReader = command.ExecuteReader();
@@ -60,7 +60,7 @@ namespace BooklistDAL
                 bookDTO.Author = dataReader["Author"].ToString();
                 bookDTO.Genre = dataReader["Genre"].ToString();
                 bookDTO.Title = dataReader["Title"].ToString();
-                bookDTO.Id = (int)dataReader["Book_Id"];
+                bookDTO.Id = (int)dataReader["Id"];
             }
             return bookDTO;
         }
@@ -69,7 +69,7 @@ namespace BooklistDAL
         {
                 cnn = new SqlConnection(connectionString);
                 cnn.Open();
-                sql = "insert into book (Title, Author, Genre) values(@Title, @Author, @Genre)";
+                sql = "INSERT INTO book (Title, Author, Genre) VALUES(@Title, @Author, @Genre)";
                 command = new SqlCommand(sql, cnn);
                 command.Parameters.AddWithValue("@Title", book.Title);
                 command.Parameters.AddWithValue("@Author", book.Author);
@@ -82,7 +82,7 @@ namespace BooklistDAL
         {
                 cnn = new SqlConnection(connectionString);
                 cnn.Open();
-                sql = "UPDATE book SET Title = @Title, Author = @Author, Genre = @Genre WHERE Book_Id = @Id";
+                sql = "UPDATE book SET Title = @Title, Author = @Author, Genre = @Genre WHERE Id = @Id";
                 command = new SqlCommand(sql, cnn);
                 command.Parameters.AddWithValue("@Title", book.Title);
                 command.Parameters.AddWithValue("@Author", book.Author);
@@ -96,7 +96,7 @@ namespace BooklistDAL
         {
                 cnn = new SqlConnection(connectionString);
                 cnn.Open();
-                sql = "DELETE FROM book WHERE Book_Id = @Id";
+                sql = "DELETE FROM book WHERE Id = @Id";
                 command = new SqlCommand(sql, cnn);
                 command.Parameters.AddWithValue("@Id", id);
                 command.ExecuteNonQuery();

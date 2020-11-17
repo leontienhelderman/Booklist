@@ -44,7 +44,7 @@ namespace BooklistLib
 
             foreach(BookDTO bookDTO in bookDTOs)
             {
-                BookModel book = ConvertToBook(bookDTO);
+                BookModel book = ConvertToBookModel(bookDTO);
                 books.Add(book);
             }
             
@@ -55,11 +55,11 @@ namespace BooklistLib
         {
             BookDTO bookDTO = new BookDTO(id);
             bookDTO = _bookRepository.GetBook(id);
-            BookModel book = ConvertToBook(bookDTO);
+            BookModel book = ConvertToBookModel(bookDTO);
             return book;           
         }
 
-        public BookModel ConvertToBook(BookDTO bookDTO)
+        public BookModel ConvertToBookModel(BookDTO bookDTO)
         {
             BookModel book = new BookModel()
             {

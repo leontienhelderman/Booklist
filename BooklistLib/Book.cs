@@ -13,6 +13,7 @@ namespace BooklistLib
         public string ExtraInfo { get; set; }
         public int Rating { get; set; }
         public string Genre { get; set; }
+        public int Id { get; set; }
 
         //public Book(string title, string author, string genre, string cover, string extraInfo, int rating)
         //{

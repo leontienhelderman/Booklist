@@ -122,3 +122,5 @@ D:\repos\Booklist\Booklist\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.
 D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\Book\Create.cshtml.g.cs
 D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\Book\Edit.cshtml.g.cs
 D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\Book\Delete.cshtml.g.cs
+D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\List\Index.cshtml.g.cs
+D:\repos\Booklist\Booklist\obj\Debug\netcoreapp3.1\Razor\Views\List\Create.cshtml.g.cs

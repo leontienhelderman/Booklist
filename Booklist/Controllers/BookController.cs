@@ -19,8 +19,8 @@ namespace Booklist.Controllers
 
         public IActionResult Index()
         {
-            var list = _bookCollection.GetBooks();
-            return View(list);
+            var books = _bookCollection.GetBooks();
+            return View(books);
         }
 
         public ViewResult Details(int id)
