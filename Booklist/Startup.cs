@@ -32,6 +32,7 @@ namespace Booklist
             services.AddScoped<IBook, BookCollection>();
             services.AddScoped<IListRepository, ListRepository>();
             services.AddScoped<IList, ListCollection>();
+            services.AddScoped<IBookListRepository, BookListRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

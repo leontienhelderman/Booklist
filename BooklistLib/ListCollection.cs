@@ -10,10 +10,15 @@ namespace BooklistLib
 {
     public class ListCollection : IList
     {
-        public IListRepository _listRepository;
+        private readonly IListRepository _listRepository;
         public ListCollection(IListRepository listRepository)
         {
             _listRepository = listRepository;
+        }
+
+        public ListCollection()
+        {
+
         }
 
         public void AddList(ListModel list)
@@ -24,17 +29,21 @@ namespace BooklistLib
 
         public void DeleteList(int id)
         {
-            throw new NotImplementedException();
+            _listRepository.Delete(id);
         }
 
         public void EditList(ListModel list)
         {
-            throw new NotImplementedException();
+            ListDTO listDTO = ConvertToListDTO(list);
+            _listRepository.Update(listDTO);
         }
 
         public ListModel GetList(int id)
         {
-            throw new NotImplementedException();
+            ListDTO listDTO;
+            listDTO = _listRepository.GetList(id);
+            ListModel list = ConvertToListModel(listDTO);
+            return list;
         }
 
         public List<ListModel> GetLists()

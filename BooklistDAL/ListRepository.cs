@@ -21,69 +21,76 @@ namespace BooklistDAL
 
         public ListRepository()
         {
-
+            cnn = new SqlConnection(connectionString);
         }
 
         public void Create(ListDTO list)
         {
-            try
-            {
-                cnn = new SqlConnection(connectionString);
-                cnn.Open();
-                sql = "INSERT INTO list (Name) VALUES(@Name)";
-                command = new SqlCommand(sql, cnn);
-                command.Parameters.AddWithValue("@Name", list.Name);
-                command.ExecuteNonQuery();
-                cnn.Close();
-            }
-            catch
-            {
-                throw new NotImplementedException();
-            }
-            
+            cnn.Open();
+            sql = "INSERT INTO list (Name) VALUES(@Name)";
+            command = new SqlCommand(sql, cnn);
+            command.Parameters.AddWithValue("@Name", list.Name);
+            command.ExecuteNonQuery();
+            cnn.Close();
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            cnn.Open();
+            sql = "DELETE FROM list WHERE Id = @Id";
+            command = new SqlCommand(sql, cnn);
+            command.Parameters.AddWithValue("@Id", id);
+            command.ExecuteNonQuery();
+            cnn.Close();
         }
 
         public ListDTO GetList(int id)
         {
-            throw new NotImplementedException();
+            ListDTO listDTO = new ListDTO();
+
+            cnn.Open();
+            sql = "SELECT * FROM list WHERE Id = @id";
+            command = new SqlCommand(sql, cnn);
+            command.Parameters.AddWithValue("@Id", id);
+            dataReader = command.ExecuteReader();
+
+            while (dataReader.Read())
+            {
+                listDTO.Name = dataReader["Name"].ToString();
+                listDTO.Id = (int)dataReader["Id"];
+            }
+            return listDTO;
         }
 
         public List<ListDTO> GetLists()
         {
-            try
-            {
-                List<ListDTO> lists;
-                cnn = new SqlConnection(connectionString);
-                cnn.Open();
-                sql = "SELECT * FROM list";
-                adapter.SelectCommand = new SqlCommand(sql, cnn);
-                adapter.SelectCommand.ExecuteNonQuery();
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
+            List<ListDTO> lists;
+            cnn.Open();
+            sql = "SELECT * FROM list";
+            adapter.SelectCommand = new SqlCommand(sql, cnn);
+            adapter.SelectCommand.ExecuteNonQuery();
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
 
-                lists = (from DataRow list in dataTable.Rows
-                         select new ListDTO()
-                         {
-                             Name = list["Name"].ToString(),
-                             Id = (int)list["Id"]
-                         }).ToList();
-                return lists;
-            }
-            catch
-            {
-                throw new NotImplementedException();
-            }
-            
+            lists = (from DataRow list in dataTable.Rows
+                     select new ListDTO()
+                     {
+                         Name = list["Name"].ToString(),
+                         Id = (int)list["Id"]
+                     }).ToList();
+            return lists;
+
         }
 
         public void Update(ListDTO list)
         {
-            throw new NotImplementedException();
+            cnn.Open();
+            sql = "UPDATE book SET Name = @Name WHERE Id = @id";
+            command = new SqlCommand(sql, cnn);
+            command.Parameters.AddWithValue("@Name", list.Name);
+            command.Parameters.AddWithValue("@Id", list.Id);
+            command.ExecuteNonQuery();
+            cnn.Close();
         }
     }
 }

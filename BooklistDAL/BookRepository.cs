@@ -20,13 +20,12 @@ namespace BooklistDAL
 
         public BookRepository()
         {
-            
+            cnn = new SqlConnection(connectionString);
         }
 
         public List<BookDTO> GetAllBooks()
         {
             List<BookDTO> books;
-            cnn = new SqlConnection(connectionString);
             cnn.Open();
             sql = "SELECT Title, Author, Genre, Id FROM Book";
             adapter.SelectCommand = new SqlCommand(sql, cnn);
@@ -48,7 +47,6 @@ namespace BooklistDAL
         public BookDTO GetBook(int id)
         {
             BookDTO bookDTO = new BookDTO();
-            cnn = new SqlConnection(connectionString);
             cnn.Open();
             sql = "SELECT * FROM Book WHERE Id = @Id";
             command = new SqlCommand(sql, cnn);
@@ -67,7 +65,6 @@ namespace BooklistDAL
 
         public void Create(BookDTO book)
         {
-                cnn = new SqlConnection(connectionString);
                 cnn.Open();
                 sql = "INSERT INTO book (Title, Author, Genre) VALUES(@Title, @Author, @Genre)";
                 command = new SqlCommand(sql, cnn);
@@ -80,7 +77,6 @@ namespace BooklistDAL
 
         public void Update(BookDTO book)
         {
-                cnn = new SqlConnection(connectionString);
                 cnn.Open();
                 sql = "UPDATE book SET Title = @Title, Author = @Author, Genre = @Genre WHERE Id = @Id";
                 command = new SqlCommand(sql, cnn);
@@ -94,7 +90,6 @@ namespace BooklistDAL
 
         public void Delete(int id)
         {
-                cnn = new SqlConnection(connectionString);
                 cnn.Open();
                 sql = "DELETE FROM book WHERE Id = @Id";
                 command = new SqlCommand(sql, cnn);

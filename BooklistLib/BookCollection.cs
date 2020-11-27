@@ -53,7 +53,7 @@ namespace BooklistLib
 
         public BookModel GetBook(int id)
         {
-            BookDTO bookDTO = new BookDTO(id);
+            BookDTO bookDTO;
             bookDTO = _bookRepository.GetBook(id);
             BookModel book = ConvertToBookModel(bookDTO);
             return book;           

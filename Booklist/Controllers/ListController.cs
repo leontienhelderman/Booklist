@@ -18,8 +18,12 @@ namespace Booklist.Controllers
 
         public IActionResult Index()
         {
-            var lists = _listCollection.GetLists();
-            return View(lists);
+            return View(_listCollection.GetLists());
+        }
+
+        public ViewResult Details(int id)
+        {
+            return View(_listCollection.GetList(id)); 
         }
 
         [HttpGet]
@@ -32,6 +36,32 @@ namespace Booklist.Controllers
         public IActionResult Create(ListModel list)
         {
             _listCollection.AddList(list);
+            return RedirectToAction("Index", "List");
+        }
+
+        [HttpGet]
+        public ViewResult Edit(int id)
+        {
+            return View(_listCollection.GetList(id));
+        }
+
+        [HttpPost]
+        public IActionResult Edit(ListModel list)
+        {
+            _listCollection.EditList(list);
+            return RedirectToAction("Index", "List");
+        }
+
+        [HttpGet]
+        public ViewResult Delete(int id)
+        {
+            return View(_listCollection.GetList(id));
+        }
+
+        [HttpPost]
+        public IActionResult Delete(ListModel list)
+        {
+            _listCollection.DeleteList(list.Id);
             return RedirectToAction("Index", "List");
         }
     }
