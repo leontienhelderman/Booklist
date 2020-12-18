@@ -11,29 +11,28 @@ namespace BooklistDAL
 {
     public class BookRepository : IBookRepository
     {
-        string connectionString = @"Server = mssql.fhict.local; Database = dbi439215_booklist; User Id = dbi439215_booklist; Password = booklist";
-        SqlConnection cnn;
+        readonly ConnectionManager connection = new ConnectionManager();
         SqlCommand command;
-        SqlDataAdapter adapter = new SqlDataAdapter();
+        readonly SqlDataAdapter adapter = new SqlDataAdapter();
         SqlDataReader dataReader;
         string sql = "";
 
         public BookRepository()
         {
-            cnn = new SqlConnection(connectionString);
         }
 
         public List<BookDTO> GetAllBooks()
         {
             List<BookDTO> books;
-            cnn.Open();
-            sql = "SELECT Title, Author, Genre, Id FROM Book";
-            adapter.SelectCommand = new SqlCommand(sql, cnn);
-            adapter.SelectCommand.ExecuteNonQuery();
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            
-            books = (from DataRow book in dataTable.Rows
+            using (connection.OpenConnection())
+            {
+                sql = "SELECT Title, Author, Genre, Id FROM Book";
+                adapter.SelectCommand = new SqlCommand(sql, connection.GetConnection);
+                adapter.SelectCommand.ExecuteNonQuery();
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                books = (from DataRow book in dataTable.Rows
                          select new BookDTO()
                          {
                              Author = book["Author"].ToString(),
@@ -41,61 +40,70 @@ namespace BooklistDAL
                              Title = book["Title"].ToString(),
                              Id = (int)book["Id"]
                          }).ToList();
+            }
+            
             return books;
         }
 
         public BookDTO GetBook(int id)
         {
             BookDTO bookDTO = new BookDTO();
-            cnn.Open();
-            sql = "SELECT * FROM Book WHERE Id = @Id";
-            command = new SqlCommand(sql, cnn);
-            command.Parameters.AddWithValue("@Id", id);
-            dataReader = command.ExecuteReader();
-
-            while (dataReader.Read())
+            using (connection.OpenConnection())
             {
-                bookDTO.Author = dataReader["Author"].ToString();
-                bookDTO.Genre = dataReader["Genre"].ToString();
-                bookDTO.Title = dataReader["Title"].ToString();
-                bookDTO.Id = (int)dataReader["Id"];
+                sql = "SELECT * FROM Book WHERE Id = @Id";
+                command = new SqlCommand(sql, connection.GetConnection);
+                command.Parameters.AddWithValue("@Id", id);
+                dataReader = command.ExecuteReader();
+
+                while (dataReader.Read())
+                {
+                    bookDTO.Author = dataReader["Author"].ToString();
+                    bookDTO.Genre = dataReader["Genre"].ToString();
+                    bookDTO.Title = dataReader["Title"].ToString();
+                    bookDTO.Id = (int)dataReader["Id"];
+                }
             }
+            
             return bookDTO;
         }
 
         public void Create(BookDTO book)
         {
-                cnn.Open();
+            using (connection.OpenConnection())
+            {
                 sql = "INSERT INTO book (Title, Author, Genre) VALUES(@Title, @Author, @Genre)";
-                command = new SqlCommand(sql, cnn);
+                command = new SqlCommand(sql, connection.GetConnection);
                 command.Parameters.AddWithValue("@Title", book.Title);
                 command.Parameters.AddWithValue("@Author", book.Author);
                 command.Parameters.AddWithValue("@Genre", book.Genre);
                 command.ExecuteNonQuery();
-                cnn.Close();
+            }
+                
         }
 
         public void Update(BookDTO book)
         {
-                cnn.Open();
+            using (connection.OpenConnection())
+            {
                 sql = "UPDATE book SET Title = @Title, Author = @Author, Genre = @Genre WHERE Id = @Id";
-                command = new SqlCommand(sql, cnn);
+                command = new SqlCommand(sql, connection.GetConnection);
                 command.Parameters.AddWithValue("@Title", book.Title);
                 command.Parameters.AddWithValue("@Author", book.Author);
                 command.Parameters.AddWithValue("@Genre", book.Genre);
                 command.Parameters.AddWithValue("@Id", book.Id);
                 command.ExecuteNonQuery();
-                cnn.Close();
+            }
         }
 
         public void Delete(int id)
         {
-                cnn.Open();
+            using (connection.OpenConnection())
+            {
                 sql = "DELETE FROM book WHERE Id = @Id";
-                command = new SqlCommand(sql, cnn);
+                command = new SqlCommand(sql, connection.GetConnection);
                 command.Parameters.AddWithValue("@Id", id);
                 command.ExecuteNonQuery();
-                cnn.Close();
+            }
         }
     }
 }

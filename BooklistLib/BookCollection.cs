@@ -59,7 +59,7 @@ namespace BooklistLib
             return book;           
         }
 
-        public BookModel ConvertToBookModel(BookDTO bookDTO)
+        private BookModel ConvertToBookModel(BookDTO bookDTO)
         {
             BookModel book = new BookModel()
             {
@@ -74,7 +74,7 @@ namespace BooklistLib
             return book;
         }
 
-        public BookDTO ConvertToBookDTO(BookModel book)
+        private BookDTO ConvertToBookDTO(BookModel book)
         {
             BookDTO bookDTO = new BookDTO()
             {
