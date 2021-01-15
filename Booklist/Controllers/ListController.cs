@@ -84,7 +84,8 @@ namespace Booklist.Controllers
         [HttpGet]
         public ViewResult DeleteBook(int id)
         {
-            return View(_bookList.GetBookList(id));
+            var model = _bookList.GetBookList(id);
+            return View(model);
         }
 
         [HttpPost]

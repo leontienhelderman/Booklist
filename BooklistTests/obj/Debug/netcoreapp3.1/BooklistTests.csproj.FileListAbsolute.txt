@@ -104,3 +104,12 @@ D:\repos\Booklist\BooklistTests\obj\Debug\netcoreapp3.1\BooklistTests.csproj.Cop
 D:\repos\Booklist\BooklistTests\obj\Debug\netcoreapp3.1\BooklistTests.dll
 D:\repos\Booklist\BooklistTests\obj\Debug\netcoreapp3.1\BooklistTests.pdb
 D:\repos\Booklist\BooklistTests\obj\Debug\netcoreapp3.1\BooklistTests.genruntimeconfig.cache
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.FileExtensions.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Json.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Abstractions.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileProviders.Physical.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.FileSystemGlobbing.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+D:\repos\Booklist\BooklistTests\bin\Debug\netcoreapp3.1\System.Text.Json.dll

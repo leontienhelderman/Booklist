@@ -25,22 +25,29 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Author)
+                </td>
+                <td>
+                    <a asp-action="Details" asp-controller="Book" asp-route-id="@item.BookId" class="btn btn-secondary" role="button">Details</a> |
+                    <a asp-action="DeleteBook" asp-controller="List"  asp-route-id="@item.BookId" class="btn btn-secondary" role="button">Delete</a>
+                </td>
+            </tr>
+
+        }
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Author)
-            </td>
-            <td>
-                <a asp-controller="Book" asp-action="Details" asp-route-id="@item.BookId" class="btn btn-secondary" role="button">Details</a> |
-                <a asp-controller="List" asp-action="DeleteBook" asp-route-id="@item.BookId" class="btn btn-secondary" role="button">Delete</a>
+                <a asp-controller="List" asp-action="Edit" class="btn btn-secondary" role="button">Edit list</a>
             </td>
         </tr>
-}
     </tbody>
 </table>
